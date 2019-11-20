@@ -1,26 +1,26 @@
-<div data-testid="back-button" class="padded">
+<div data-testid="back-button" class="padded" (click) = "returnToBack()">
   <jesi-button>🡄 Back to houses</jesi-button>
 </div>
 
-<main class="padded spaced">
+<main class="padded spaced"  *ngIf="house$ | async as house">
   <aside>
-    <img />
+    <img [src]="house.imagePath" [alt]="house.coatOfArms"   />
   </aside>
-  <div>
+  <div >
     <h2>
-      <!-- HOUSE NAME -->
+      {{house.name}}
     </h2>
-    <h3>
-      <!-- HOUSE REGION - HOUSE SEAT -->
+    <h3 >
+
     </h3>
     <dl>
-      <dt>Words</dt>
+      <dt >Words</dt>
       <dd>
-        <!-- HOUSE WORDS -->
+        {{house.words}}
       </dd>
       <dt>Coat of arms</dt>
       <dd>
-        <!-- HOUSE COAT OF ARMS -->
+        {{house.CoatOfArms}}
       </dd>
     </dl>
   </div>

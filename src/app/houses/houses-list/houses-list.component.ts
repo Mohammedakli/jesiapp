@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { JesiappPage } from 'src/app/shared/JesiappPage';
 import { HousesService } from '../houses.service';
 import { House } from '../House';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './houses-list.component.html',
@@ -14,7 +15,7 @@ export class HousesListComponent implements OnInit, JesiappPage {
 
   public houses$!: Observable<House[]>;
 
-  public constructor(private readonly housesService: HousesService) {}
+  public constructor(private readonly housesService: HousesService, private readonly router: Router) {}
 
   public ngOnInit() {
     this.loadHouses();
@@ -23,4 +24,15 @@ export class HousesListComponent implements OnInit, JesiappPage {
   private loadHouses() {
     this.houses$ = this.housesService.listHouses();
   }
+
+  public openDetails(id){
+    this.router.navigateByUrl('/houses/' + id);
+  }
+
+
+
+
+
+
+
 }
